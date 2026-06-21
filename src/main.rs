@@ -1,11 +1,26 @@
 fn main() {
-let mut _a: i8 = 5;
-let mut _b: i8 = 10;
-print!("{} + {} = {}", _a, _b, do_sum(_a, _b));
-_a = _a + do_sum(_a, _b);
-print!("\nNew a = {}", _a);
+    stack_fn();
+    heap_fn();
+    update_string();
 }
 
-fn do_sum(a: i8, b: i8) -> i8 {
-    a + b
+fn stack_fn() {
+    let a = 4;
+    let b = 4;
+    let c = a + b;
+    print!("{} + {} = {}\n", a, b, c);
+}
+
+fn heap_fn() {
+    let a = String::from("Hello");
+    let b = String::from("World");
+    let c = format!("{} {}\n", a, b);
+    print!("{}", c);
+}
+
+fn update_string() {
+    let mut a = String::from("Hello");
+    print!("{}\n", a);
+    a.push_str(", World!");
+    print!("{}", a);
 }
