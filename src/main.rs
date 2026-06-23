@@ -6,16 +6,7 @@ enum MyResult<A, B> {
 }
 
 fn main() {
-    let res = fs::read_to_string("example.txt");
-
-    match res {
-        Ok(content) => {
-            println!("File content: {}", content);
-        }
-        Err(e) => {
-            println!("Error reading file: {}", e);
-        }
-    }
+    let res = read_from_file("example.txt".to_string());
 }
 
 fn read_from_file(file_content: String) -> MyResult<String, String> {
