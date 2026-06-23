@@ -1,20 +1,18 @@
-use std::fs;
-
-enum MyResult<A, B> {
-    Ok(A),
-    Err(B),
+fn find_first_a(s: String) -> Option<i32> {
+    for (index, character) in s.chars().enumerate() {
+        if character == 'a' {
+            return Some(index as i32);
+        }
+    }
+    return None;
 }
 
 fn main() {
-    let res = read_from_file("example.txt".to_string());
-}
-
-fn read_from_file(file_content: String) -> MyResult<String, String> {
-    let res = fs::read_to_string("example.txt");
-
-    if let Ok(content) = res {
-        return MyResult::Ok(content);
-    } else {
-        return MyResult::Err("Failed to read file".to_string());
+    let my_string = String::from("raman");
+    let res = find_first_a(my_string);
+    
+    match res {
+        Some(index) => println!("The first occurrence of 'a' is at index: {}", index),
+        None => println!("The character 'a' was not found in the string."),
     }
 }
